@@ -1,0 +1,12 @@
+{
+    "listenPort" : 5001,
+    "historyNum" : 10,
+
+    "redisHost" : "127.0.0.1",
+    "redisPort" : 6379,
+
+    "hostName" : "http://www.qqsdimg.com",
+
+    "sessionTime" : 60,
+    "sessionCheckTime" : 60
+}

@@ -1,0 +1,18 @@
+{
+    "appenders":[
+        {
+            "type":"console",
+            "category":"test1"
+        },
+        {
+            "type":"dateFile",
+            "filename":"./log/chatServer.log",
+            "pattern": "_yyyy-MM-dd_hh",
+            "alwaysIncludePattern": false, 
+            "category":"server"
+        }
+    ],
+    "levels":{
+        "test":"trace"
+    }
+}
