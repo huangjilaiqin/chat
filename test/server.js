@@ -6,7 +6,7 @@ var log = log4js.getLogger('server');
 
 var server = socketIO(5002);
 server.on('connection', function(socket){
-    log.info('connect:', socket.id);
+    log.info('connect:', socket.id);    
     socket.on('disconnect', function(){
         log.info('disconnect:', this.id);    
     });
@@ -14,3 +14,4 @@ server.on('connection', function(socket){
         log.info('data:', msg);    
     });
 });
+
