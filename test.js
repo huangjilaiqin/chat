@@ -1,7 +1,16 @@
 
-var name = 'huangji';
-var age = 25;
-function t(n, a){
-    console.log(n, a);
+var socketIO = require('socket.io-client');
+var debug = require('debug')('test');
+function foo(){
+    console.log('asdf');
 }
-setTimeout("t('"+name+","+age+"')", 1000);
+
+var ex = foo;
+ex.myname = 'huangji';
+console.log(ex.myname);
+ex();
+debug('hello');
+var client = socketIO('ws://123.59.40.113:5002');
+client.on('connect', function(){
+    debug('connection');        
+});

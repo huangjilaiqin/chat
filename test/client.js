@@ -18,11 +18,14 @@ var reconnect = 0;
 setInterval(function(){
     //console.log('connect:', connect, 'disconnect:', disconnect, 'reconnect:', reconnect, 'error:', error);
 }, 1000);
+var uhost2 = 'ws://123.59.40.113:5002';
+
+var length = 5000;
 
 function bench(){
     if(length){
         length--;
-        var socket = io.connect(uhost2, {
+        var socket = io.connect(host2, {
             'timeout': 1000,
             'reconnectionAttempts': 50,
             forceNew: true,
@@ -39,6 +42,7 @@ function bench(){
             this.on('error', function(){
                 error++;
             });
+
         });
         setTimeout(bench, 5);
     }
@@ -48,5 +52,4 @@ function bench(){
 }
 
 bench();
-
 
