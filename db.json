@@ -1,9 +1,9 @@
 
 {
-    "host" : "127.0.0.1",
-    "port" : 3306,
-    "user" : "root",
-    "password" : "huangji",
-    "database" : "chat"
+    "host" : "192.168.41.180",
+    "port" : 3307,
+    "user" : "ball_rw",
+    "password" : "123456",
+    "database" : "ball"
 }
 

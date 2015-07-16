@@ -1,9 +1,12 @@
 node_modules
 #.gitignore
-!/log/
-
 *.sw*
 *.pid
-*.log
-*.log_*
+*.json
 *.bak
+
+log/*.log
+#log/performance.log
+log/*.log_*
+test/log/*.log
+test/log/*.log_*
