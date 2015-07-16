@@ -2,9 +2,8 @@
 var io = require('socket.io-client');
 var host = 'ws://localhost:5002';
 var uhost2 = 'ws://123.59.40.113:5002';
-var socket = io.connect(host, {
+var socket = io.connect(uhost2, {
     'timeout': 1000,
-    //'reconnection': false,
     'reconnectionAttempts': 50,
     forceNew: true,
 });
