@@ -6,10 +6,17 @@
         },
         {
             "type":"dateFile",
-            "filename":"./log/chatServer.log",
+            "filename":"./log/server.log",
             "pattern": "_yyyy-MM-dd_hh",
             "alwaysIncludePattern": false, 
             "category":"server"
+        },
+        {
+            "type":"dateFile",
+            "filename":"./log/client.log",
+            "pattern": "_yyyy-MM-dd_hh",
+            "alwaysIncludePattern": false, 
+            "category":"client"
         }
     ],
     "levels":{

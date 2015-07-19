@@ -6,6 +6,7 @@ var socket = io.connect(uhost2, {
     'timeout': 1000,
     'reconnectionAttempts': 50,
     forceNew: true,
+    transports: ["websocket", 'flashsocket', 'htmlfile', 'xhr-multipart', 'polling-xhr', 'jsonp-polling'],
 });
 
 socket.on('connect', function(){
