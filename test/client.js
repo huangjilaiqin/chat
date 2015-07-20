@@ -9,7 +9,7 @@ var uhost = 'http://ws.51winball.com';
 
 var uhost2 = 'ws://123.59.40.113:5002';
 
-var length = 5000;
+var length = 10000;
 var connect = 0;
 var error = 0;
 var disconnect = 0;
@@ -26,8 +26,9 @@ function bench(){
         length--;
         var socket = io.connect(uhost2, {
             'timeout': 1000,
-            'reconnectionAttempts': 50,
+            'reconnectionAttempts': 3,
             forceNew: true,
+            transports: ['websocket', 'flashsocket', 'htmlfile', 'xhr-multipart', 'xhr-polling', 'jsonp-polling'],
         });
 
         /*
@@ -45,7 +46,7 @@ function bench(){
 
         });
         */
-        setTimeout(bench, 5);
+        setTimeout(bench, 30);
     }
     else{
         console.log('done');
