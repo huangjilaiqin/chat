@@ -4,8 +4,11 @@ var io = require('socket.io-client');
 var host = 'ws://localhost:5001';
 var rehost = 'ws://192.168.41.102:5001';
 var yuhost = 'http://ws.qqshidao.com';
+
 var uhost = 'http://ws.51winball.com';
-var socket = io.connect(host, {
+var uhost2 = 'ws://123.59.40.113:5002';
+
+var socket = io.connect(uhost2, {
     'timeout': 1000,
     'reconnectionAttempts': 50,
 });
