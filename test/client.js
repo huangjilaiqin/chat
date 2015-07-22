@@ -29,14 +29,16 @@ process.on('uncaughtException', function (err) {
     log.fatal('uncaughtException:', err.stack);
 });
 
+setInterval(function keepAlive(){}, 24*60*1000);
+
 
 function bench(){
     if(length){
         length--;
         var socket = io.connect(uhost2, {
-            timeout: 10000,
-            reconnectionAttempts: 5,
-            reconnectionDelay: 2000,
+            //timeout: 10000,
+            //reconnectionAttempts: 5,
+            //reconnectionDelay: 2000,
             forceNew: true,
             transports: ["websocket", 'flashsocket', 'htmlfile', 'xhr-multipart', 'polling-xhr', 'jsonp-polling'],
         });
@@ -61,11 +63,14 @@ function bench(){
         socket.on('error', function(err){
             log.error(err);
         });
-        setTimeout(bench, 20);
+        setTimeout(bench, getRandomByRange(5, 20));
     }
     else{
         console.log('done');
     }
+}
+function getRandomByRange(min, max){
+    return Math.floor(Math.random()*(max-min)+min+0.5)
 }
 
 bench();

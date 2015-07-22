@@ -6,6 +6,7 @@
     "redisPort" : 6379,
 
     "hostName" : "http://www.qqsdimg.com",
-    "sessionTime" : 1800,
-    "sessionCheckTime" : 300
+    "sessionTime" : 1800000,
+    "sessionCheckTime" : 300000,
+    "analysisPerformanceTime" : 300000
 }

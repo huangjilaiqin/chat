@@ -3,8 +3,8 @@
 var NewestQueue = require('./util.js').NewestQueue;
 serverConfig = require('./server.json');
 
-serverConfig.sessionTime = serverConfig.sessionTime*1000;
-serverConfig.sessionCheckTime = serverConfig.sessionCheckTime*1000;
+serverConfig.sessionTime = serverConfig.sessionTime;
+serverConfig.sessionCheckTime = serverConfig.sessionCheckTime;
 
 //存储房间信息,用户信息
 rooms = {}

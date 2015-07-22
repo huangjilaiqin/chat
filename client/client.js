@@ -8,7 +8,7 @@ var yuhost = 'http://ws.qqshidao.com';
 var uhost = 'http://ws.51winball.com';
 var uhost2 = 'ws://123.59.40.113:5002';
 
-var socket = io.connect(uhost2, {
+var socket = io.connect(host, {
     'timeout': 1000,
     'reconnectionAttempts': 50,
 });

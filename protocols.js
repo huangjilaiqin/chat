@@ -105,7 +105,6 @@ function onMessage(data){
 
     //转发数据给房间的其它用户
     roomBroadcast(roomId, -1, issuedType.message, obj);
-    logPerformance.trace('costTime message:', costMessage[1]-costMessage[0]);
 
     //入库
     var sql = 'insert into roomchatrecord set roomid=?, time=?, type=?, userid=?, content=?'; 

@@ -4,6 +4,7 @@ var fs = require('fs');
 var mysql = require('mysql');
 var async = require('async');
 var redis = require('redis');
+var os = require('os');
 
 
 var DateFormat = require('./util.js').DateFormat;
@@ -142,13 +143,39 @@ function afterLoadInfo(err, results){
             }
         });
     });
+    
     setTimeout(manageSessions, serverConfig.sessionCheckTime);
-    setTimeout(function(){
-        var result = common.analyzeTime();
-        for(var i in result)
-            log.info('analyzeTime:', result[i]);
-        setTimeout(arguments.callee, 60000);
-    }, 60000);
+
+    var totalmem = os.totalmem();
+    var cpus = os.cpus();
+    logPerformance.info('totalmem:'+totalmem/1048576+'mb');
+    logPerformance.info('cups:'+cpus.length);
+
+    if(serverConfig.analysisPerformanceTime){
+        var analysisTime = serverConfig.analysisPerformanceTime;
+        setTimeout(function showAnalysis(){
+            redisCli.get('onlineNum', function(err, onlineNum){
+                if(err){
+                    log.error('redisCli get onlineNum error:', err);
+                    return;
+                }
+                var result = common.analyzeTime(onlineNum);
+
+                if(result.length){
+                    var loadavg = os.loadavg();
+                    logPerformance.info('loadavg:'+loadavg[0]+' '+loadavg[1]+' '+loadavg[2]);
+                    var freemem = os.freemem();
+                    logPerformance.info('memFreeRate:'+freemem/totalmem);
+
+                    logPerformance.info('online:'+onlineNum);
+                    for(var i in result)
+                        logPerformance.info(result[i]);
+                }
+                setTimeout(showAnalysis, analysisTime);
+            });
+            
+        }, analysisTime);
+    }
 }
 
 function manageSessions(){

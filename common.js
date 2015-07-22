@@ -21,9 +21,10 @@ function onDownline(socket, roomId, userId){
     roomBroadcast(roomId, -1, issuedType.downline, {roomId:roomId,userId:userId});
 }
 
-function analyzeTime(){
+function analyzeTime(onlineNum){
 
     var analyze = [];
+
     for(var type in costTimes){
         var costTime = costTimes[type];
         var length = costTime.length;
@@ -41,8 +42,12 @@ function analyzeTime(){
                 minCost = cost;
         }
         var averageTime = totalTime/length;
-        var str = 'costTime type:' + type + ' length:' + length + ' averageTime:' + averageTime + ' maxCost:' + maxCost + ' minCost:' + minCost;
+        var str = 'type:' + type + ' length:' + length + ' averageTime:' + averageTime + ' maxCost:' + maxCost + ' minCost:' + minCost;
+        console.log(str);
         analyze.push(str);
+        //将处理过的数据删除
+        delete costTimes[type];
+        costTimes[type] = [];
     }
     return analyze;
 }
