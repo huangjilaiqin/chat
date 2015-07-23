@@ -45,6 +45,9 @@ function bench(){
 
         socket.on('connect', function(){
             //log.info('connection', socket.getsockname());
+            socket.emit('enterRoom', JSON.stringify({}));
+            setTimeout(function(){}, getRandomByRange(1000, 10000));
+            socket.emit('message', );
         });
         socket.on('connect_error', function(err){
             log.error('connection', err);
